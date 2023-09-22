@@ -1,0 +1,16 @@
+langchain
+pinecone-client
+sentence_transformers
+pdf2image
+pypdf
+xformers
+bitsandbytes
+accelerate
+transformers
+PyMuPDF
+boto3
+PyPDF2
+python-dotenv
+fastapi
+uvicorn
+python-multipart
