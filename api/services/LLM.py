@@ -50,11 +50,11 @@ def chat(query):
     # while True:
     # query = input("prompt:") 
     docs = docsearch.similarity_search(query)
-    result = chain.run(input_documents=docs, question=query)
+    result = chain.run(input_documents=docs, question=query+"first give one line of explanation and followed by answer in points")
     print(result)
-    conversation = "You:Your are a chatbot assistant, you need to help me with elaborating the text?\nGPT-3.5:"
-    user_input = "Breif this context:"+result
-    return openai.Completion.create(engine="text-davinci-002", prompt=conversation, max_tokens=150).choices[0].text.strip()
+    # conversation = "You:Your are a chatbot assistant, you need to help me with elaborating the text?\nGPT-3.5:"
+    # user_input = "Brief this context:"+result
+    # return openai.Completion.create(engine="text-davinci-002", prompt=conversation, max_tokens=150).choices[0].text.strip()
 
 # Example usage:
     
