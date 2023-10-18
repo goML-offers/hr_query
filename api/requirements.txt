@@ -7,8 +7,7 @@ psycopg2
 datetime
 boto3
 BeautifulSoup4
-beautifulSoup4
-pandasai
+
 bs4
 requests
 pdfkit
@@ -16,7 +15,6 @@ weasyprint
 gobject
 langchain
 pinecone-client
-sentence_transformers
 pdf2image
 pypdf
 xformers
@@ -26,3 +24,4 @@ transformers
 PyMuPDF
 boto3
 PyPDF2
+langchain

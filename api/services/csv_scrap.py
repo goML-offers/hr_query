@@ -184,11 +184,11 @@ def scrap_main(file_path):
     url_list=extract_urls_from_csv(file_path)
 
     scrap_data=scrape_websites_and_generate_pdf(url_list)
-    output_pdf_path=convert_string_to_pdf(scrap_data,"api/services/data_scrap/output.pdf")
+    output_pdf_path=convert_string_to_pdf(scrap_data,"/ap/output.pdf")
     return output_pdf_path
 
 
 def scrap_sitemap(url_list):
     scrap_data=scrape_websites_and_generate_pdf(url_list)
-    output_pdf_path=convert_string_to_pdf(scrap_data,"api/services/data_scrap/output.pdf")
+    output_pdf_path=convert_string_to_pdf(scrap_data,"/api/services/data_scrap/output.pdf")
     return output_pdf_path

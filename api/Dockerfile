@@ -15,12 +15,10 @@
 FROM python:3.11
 
 # Set the working directory
-WORKDIR /redshift/
+WORKDIR /hr_query/
 COPY . .
 # Copy the requirements file into the container
 COPY requirements.txt .
-RUN python3 -m pip install beautifulsoup4 --force-reinstall
-RUN pip install python-multipart
 # Install the required Python packages
 RUN pip install -r requirements.txt
 

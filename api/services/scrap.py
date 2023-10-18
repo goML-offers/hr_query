@@ -23,7 +23,7 @@ def scrape_website(url):
 
     # Extract all text content
     text_content = soup.get_text()
-    output_pdf_path="api/services/data_scrap/output.pdf"
+    output_pdf_path="output.pdf"
     doc = SimpleDocTemplate(output_pdf_path, pagesize=letter)
 
     # Create a list to hold the content (can include paragraphs, images, etc.)
