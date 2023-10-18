@@ -101,7 +101,7 @@ def scrape_websites_and_generate_pdf(urls):
     error_urls = []
     # n=0
     for url in urls:
-        
+        print(url)
         # print(n)
         # n+=1
         try:
@@ -183,6 +183,12 @@ def convert_string_to_pdf(string_content, output_pdf_path):
 def scrap_main(file_path):
     url_list=extract_urls_from_csv(file_path)
 
+    scrap_data=scrape_websites_and_generate_pdf(url_list)
+    output_pdf_path=convert_string_to_pdf(scrap_data,"api/services/data_scrap/output.pdf")
+    return output_pdf_path
+
+
+def scrap_sitemap(url_list):
     scrap_data=scrape_websites_and_generate_pdf(url_list)
     output_pdf_path=convert_string_to_pdf(scrap_data,"api/services/data_scrap/output.pdf")
     return output_pdf_path

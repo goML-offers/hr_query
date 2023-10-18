@@ -1,9 +1,10 @@
 import sys
 from fastapi import FastAPI, File,  UploadFile
 from fastapi import APIRouter, HTTPException, Response
-from services.csv_scrap import scrap_main
+from services.csv_scrap import scrap_main,scrap_sitemap
 from services.scrap import scrape_website
 from services.LLM import chat,store
+from services.sitemap import extract_sitemaps,extract_urls_from_html
 import os
 from fastapi.responses import JSONResponse
 import json
@@ -27,9 +28,9 @@ def data_generator(file: UploadFile):
             f.close()
         
         data_loc = scrap_main(file_path)
-
+        print("scrapped sucessfully")
         os.remove(file_path)
-        # store(data_loc)
+        store(data_loc)
         os.remove(data_loc)
         return True
     except Exception as e:
@@ -42,7 +43,7 @@ async def accuracy_generator(url: str):
         output_pdf_path = scrape_website(url)
         
         # return output_pdf_path
-        # store(output_pdf_path)
+        store(output_pdf_path)
         os.remove(output_pdf_path)
         return True
     except Exception as e:
@@ -61,3 +62,18 @@ def validating_test(query: str):
     except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 
+@router.post('/goml/LLM marketplace/Web data chat bot/sitemap', status_code=201)
+def validating_test(siteurl: str):
+    try:
+        if siteurl.lower().endswith('.xml'):
+            urls_list = extract_sitemaps(siteurl)
+        else:
+            urls_list = extract_urls_from_html(siteurl)
+        print(urls_list)
+        # output_pdf_path=scrap_sitemap(urls_list)
+        if len(urls_list)<1:
+              return {"urls_list":["The provided url has no sitemaps"]}
+        return {"urls_list":urls_list}
+    
+    except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e)) 
